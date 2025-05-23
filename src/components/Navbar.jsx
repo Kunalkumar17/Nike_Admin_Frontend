@@ -5,6 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const Logout = () =>{
     fetch(`${backendUrl}/admin_logout`,{
       method: 'POST',
@@ -13,7 +18,7 @@ const Navbar = () => {
   }).then(res=>res.json())
     .then(data =>{
       if(data === 'cookie deleted'){
-        navigate('/admin/')
+        refreshPage()
       }
     })
   }
